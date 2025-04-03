@@ -1,5 +1,5 @@
 import 'package:calculator/screens/advanced.dart';
-import 'package:calculator/screens/bill-split.dart';
+import 'package:calculator/screens/bill_split.dart';
 import 'package:calculator/screens/calculator.dart';
 import 'package:flutter/material.dart';
 
