@@ -16,6 +16,5 @@ class _BillSplitScreenState extends State<BillSplitScreen> {
       backgroundColor: Colors.teal,
       body: Center(child: Text("Bill Share!")),
     );
-    ;
   }
 }

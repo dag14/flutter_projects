@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 
 class ButtonCharacters extends StatelessWidget {
-  const ButtonCharacters({super.key, required this.buttonContent});
+  const ButtonCharacters({
+    super.key,
+    required this.buttonContent,
+    required this.onCharacterPressed,
+  });
   final dynamic buttonContent;
+  final Function(dynamic) onCharacterPressed;
 
   @override
   Widget build(BuildContext context) {
-    // double screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = MediaQuery.of(context).size.width;
+    double buttonSize = screenWidth / 4 - 16;
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        onCharacterPressed(buttonContent);
+      },
+      borderRadius: BorderRadius.circular(buttonSize / 2),
       child: Container(
+        width: buttonSize,
+        height: buttonSize,
+
         margin: EdgeInsets.all(4),
         // width: screenWidth / 4,
         decoration: BoxDecoration(
