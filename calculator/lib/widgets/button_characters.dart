@@ -27,7 +27,19 @@ class ButtonCharacters extends StatelessWidget {
         // width: screenWidth / 4,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(120),
-          color: Colors.white,
+          color:
+              buttonContent is String &&
+                      ['+', '-', '*', '/', '='].contains(buttonContent)
+                  ? Colors.orange
+                  : Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: Offset(0, 3),
+            ),
+          ],
         ),
         child: Center(
           child:

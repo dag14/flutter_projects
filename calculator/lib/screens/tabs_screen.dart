@@ -32,7 +32,15 @@ class _TabsScreenState extends State<TabsScreen> {
 
     return Scaffold(
       backgroundColor: Color(0xFFF2F3F7),
-      body: activePage,
+      body: IndexedStack(
+        index: _selectedPageIndex,
+        children: [
+          Calculator(),
+          AdvancedScreen(),
+          BillSplitScreen(),
+          Container(),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         currentIndex: _selectedPageIndex,

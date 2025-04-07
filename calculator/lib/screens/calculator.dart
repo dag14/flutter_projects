@@ -1,5 +1,6 @@
 import 'package:calculator/widgets/button_characters.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({super.key});
@@ -14,20 +15,19 @@ class _CalculatorState extends State<Calculator> {
   String input = '';
   String result = '';
 
-  void calculate(String operation, input) {
-    switch (operation) {
-      case "+":
-        break;
-      case "-":
-        break;
-      case "*":
-        break;
-      case "/":
-        break;
-      case "%":
-        break;
-      default:
-        Error;
+  void calculate() {
+    try {
+      // Replace × with * and ÷ with / for evaluation
+      String expression = input.replaceAll('×', '*').replaceAll('÷', '/');
+      final parsed = Parser().parse(expression);
+      final result = parsed.evaluate(EvaluationType.REAL, ContextModel());
+      setState(() {
+        this.result = result.toString();
+      });
+    } catch (e) {
+      setState(() {
+        result = 'Error';
+      });
     }
   }
 
@@ -37,6 +37,7 @@ class _CalculatorState extends State<Calculator> {
         input = '';
         result = '';
       } else if (buttonText == '=') {
+        calculate();
       } else if (buttonText == Icons.backspace_outlined) {
         if (input.isNotEmpty) {
           input = input.substring(0, input.length - 1);
